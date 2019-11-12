@@ -1,7 +1,7 @@
 resource "aws_cloudfront_distribution" "cloudfront_distribution" {
     origin {
         domain_name = "${aws_s3_bucket.deployment_bucket.bucket_regional_domain_name}"
-        origin_id = "${aws_s3_bucket.deployment_bucket.bucket_regional_domain_name}"
+        origin_id = "${var.app_name}"
     }
 
     enabled = true
@@ -17,11 +17,11 @@ resource "aws_cloudfront_distribution" "cloudfront_distribution" {
         viewer_protocol_policy = "redirect-to-https"
 
         forwarded_values {
-        query_string = false
+            query_string = false
 
-        cookies {
-            forward = "none"
-        }
+            cookies {
+                forward = "none"
+            }
         }
     }
 

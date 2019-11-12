@@ -1,0 +1,4 @@
+.cache
+.terraform
+public
+node_modules

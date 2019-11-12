@@ -1,0 +1,21 @@
+{
+  "name": "mapr",
+  "version": "1.0.0",
+  "description": "A Cool Mapping Playground",
+  "main": "index.js",
+  "scripts": {
+    "build": "gatsby build",
+    "start": "gatsby develop",
+    "terraform:plan": "terraform plan -var-file=./terraform/var/default.tfvars ./terraform",
+    "test": "echo NOOP"
+  },
+  "author": "Jordan Foreman <me@jordanforeman.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "gatsby-cli": "^2.8.9"
+  },
+  "dependencies": {
+    "gatsby": "^2.17.11",
+    "react-dom": "^16.11.0"
+  }
+}

@@ -1,0 +1,65 @@
+version: 2.1
+
+jobs:
+  Build:
+    docker:
+      - image: gatsbyjs/gatsby
+    steps:
+      - checkout
+      - run:
+          name: Build Gatsby Site
+          command: gatsby build
+      - save_cache:
+          key: v1-app-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }}
+          paths:
+              - ./
+  
+  Setup Infrastructure:
+    docker:
+      - image: terraform/terraform
+    steps:
+      - checkout
+      - run:
+          name: Terraform Plan
+          command: terraform plan -var-vile=./terraform/var/default.tfvars ./terraform/
+      - run:
+          name: Terraform Apply
+          command: terraform apply -var-vile=./terraform/var/default.tfvars ./terraform/
+
+  Deploy:
+    docker:
+      - image: mesosphere/aws-cli
+    steps:
+      - restore_cache:
+          key: v1-app-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }}
+      - run:
+          name: Deploy Updated Artifacts
+          command: aws --regin us-east-1 s3 sync public s3://mapr.jordanforeman.com --delete
+      - run:
+          name: Invalidate CloudFront Cache
+          command: |
+            aws configure set preview.cloudfront true
+            aws cloudfront create-invalidation --distribution-id <<CLOUDFRONT_DISTRIBUTION>> --paths "/*"
+
+workflows:
+  version: 2.1
+  deployment:
+    jobs:
+      - Build
+      - Setup Infrastructure:
+          context: AWS Context
+          requires:
+            - Build
+          filters:
+            branches:
+              only:
+                - master
+      - Deploy:
+          context: AWS Context
+          requires:
+            - Build
+            - Setup Infrastructure
+          filters:
+            branches:
+              only:
+                - master

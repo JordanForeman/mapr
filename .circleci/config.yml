@@ -23,9 +23,6 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Terraform Init
-          command: terraform init -var-file=./terraform/var/default.tfvars ./terraform/
-      - run:
           name: Terraform Plan
           command: terraform plan -var-file=./terraform/var/default.tfvars ./terraform/
       - run:

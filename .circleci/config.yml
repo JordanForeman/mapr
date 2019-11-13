@@ -24,10 +24,10 @@ jobs:
       - checkout
       - run:
           name: Terraform Plan
-          command: terraform plan -var-vile=./terraform/var/default.tfvars ./terraform/
+          command: terraform plan -var-file=./terraform/var/default.tfvars ./terraform/
       - run:
           name: Terraform Apply
-          command: terraform apply -var-vile=./terraform/var/default.tfvars ./terraform/
+          command: terraform apply -var-file=./terraform/var/default.tfvars ./terraform/
 
   Deploy:
     docker:

@@ -3,16 +3,19 @@ version: 2.1
 jobs:
   Build:
     docker:
-      - image: gatsbyjs/gatsby
+      - image: node:10.16.3
     steps:
       - checkout
       - run:
+          name: Install Dependencies
+          command: npm ci
+      - run:
           name: Build Gatsby Site
-          command: gatsby build
+          command: npm run build
       - save_cache:
           key: v1-app-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }}
           paths:
-              - ./
+              - ./public
   
   Setup Infrastructure:
     docker:

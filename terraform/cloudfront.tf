@@ -11,8 +11,8 @@ resource "aws_cloudfront_distribution" "cloudfront_distribution" {
     aliases = ["${var.app_name}.${var.root_domain}"]
 
     default_cache_behavior {
-        allowed_methods = ["GET"]
-        cached_methods = ["GET"]
+        allowed_methods = ["HEAD", "GET"]
+        cached_methods = ["HEAD", "GET"]
         target_origin_id = "${aws_s3_bucket.deployment_bucket.bucket_regional_domain_name}"
         viewer_protocol_policy = "redirect-to-https"
 

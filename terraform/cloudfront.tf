@@ -1,7 +1,7 @@
 resource "aws_cloudfront_distribution" "cloudfront_distribution" {
     origin {
         domain_name = "${aws_s3_bucket.deployment_bucket.bucket_regional_domain_name}"
-        origin_id = "${var.app_name}"
+        origin_id = "${aws_s3_bucket.deployment_bucket.bucket_regional_domain_name}"
     }
 
     enabled = true

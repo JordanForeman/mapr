@@ -39,7 +39,8 @@ jobs:
           name: Invalidate CloudFront Cache
           command: |
             aws configure set preview.cloudfront true
-            aws cloudfront create-invalidation --distribution-id <<CLOUDFRONT_DISTRIBUTION>> --paths "/*"
+            distributionId=`npx cf-find mapr.jordanforeman.com --silent`
+            aws cloudfront create-invalidation --distribution-id $distributionId --paths "/*"
 
 workflows:
   version: 2.1

@@ -12,6 +12,7 @@
   "author": "Jordan Foreman <me@jordanforeman.com>",
   "license": "ISC",
   "devDependencies": {
+    "cf-find": "0.0.2",
     "gatsby-cli": "^2.8.9"
   },
   "dependencies": {

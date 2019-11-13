@@ -19,7 +19,7 @@ jobs:
   
   Setup Infrastructure:
     docker:
-      - image: terraform/terraform
+      - image: hashicorp/terraform
     steps:
       - checkout
       - run:

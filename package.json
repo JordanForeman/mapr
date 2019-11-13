@@ -13,10 +13,16 @@
   "license": "ISC",
   "devDependencies": {
     "cf-find": "0.0.2",
+    "cz-conventional-changelog": "^3.0.2",
     "gatsby-cli": "^2.8.9"
   },
   "dependencies": {
     "gatsby": "^2.17.11",
     "react-dom": "^16.11.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
   }
 }

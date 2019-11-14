@@ -19,6 +19,9 @@
   },
   "dependencies": {
     "gatsby": "^2.17.11",
+    "gatsby-plugin-sass": "^2.1.22",
+    "mapbox-gl": "^1.5.0",
+    "node-sass": "^4.13.0",
     "react-dom": "^16.11.0"
   },
   "config": {

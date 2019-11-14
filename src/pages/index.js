@@ -1,7 +1,9 @@
 import React from 'react';
+import {Map} from '../components/map';
+import '../styles/base.scss';
 
 export default () => (
     <div>
-        <h1>Hello World!</h1>
+        <Map />
     </div>
 );

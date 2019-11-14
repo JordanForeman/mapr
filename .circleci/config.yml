@@ -15,7 +15,7 @@ jobs:
       - save_cache:
           key: v1-app-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }}
           paths:
-              - ./public
+              - public
   
   Setup Infrastructure:
     docker:

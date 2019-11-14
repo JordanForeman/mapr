@@ -36,6 +36,9 @@ jobs:
     docker:
       - image: mesosphere/aws-cli
     steps:
+      - run:
+          name: Add Certificate Authorities
+          command: apk add ca-certificates
       - restore_cache:
           key: v1-app-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }}
       - run:

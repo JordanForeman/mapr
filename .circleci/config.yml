@@ -40,7 +40,7 @@ jobs:
           key: v1-app-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }}
       - run:
           name: Deploy Updated Artifacts
-          command: aws --regin us-east-1 s3 sync public s3://mapr.jordanforeman.com --delete
+          command: aws --region us-east-1 s3 sync public s3://mapr.jordanforeman.com --delete
       - run:
           name: Invalidate CloudFront Cache
           command: |

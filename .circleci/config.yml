@@ -34,13 +34,19 @@ jobs:
 
   Deploy:
     docker:
-      - image: mesosphere/aws-cli
+      - image: circleci/node:10.16.3
     steps:
-      - run:
-          name: Add Certificate Authorities
-          command: apk add ca-certificates
       - restore_cache:
           key: v1-app-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }}
+      - run:
+          name: Install Python + Pip
+          command: sudo apt-get install python-dev python-pip
+      - run:
+          name: Install aws cli
+          command: sudo pip install awscli
+      - run:
+          name: Setting Signature Version 4 for S3 Request Authentication
+          command: aws configure set default.s3.signature_version s3v4
       - run:
           name: Deploy Updated Artifacts
           command: aws --region us-east-1 s3 sync public s3://mapr.jordanforeman.com --delete

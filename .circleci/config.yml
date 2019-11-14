@@ -2,6 +2,7 @@ version: 2.1
 
 jobs:
   Build:
+    working_directory: ~/project
     docker:
       - image: node:10.16.3
     steps:
@@ -18,6 +19,7 @@ jobs:
               - public
   
   Setup Infrastructure:
+    working_directory: ~/project
     docker:
       - image: hashicorp/terraform
     steps:
@@ -33,6 +35,7 @@ jobs:
           command: terraform apply -auto-approve -var-file=./terraform/var/default.tfvars ./terraform/
 
   Deploy:
+    working_directory: ~/project
     docker:
       - image: circleci/node:10.16.3
     steps:

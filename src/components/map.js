@@ -3,7 +3,6 @@ import mapboxgl from 'mapbox-gl';
 
 import '../styles/map.scss';
 import '../../node_modules/mapbox-gl/src/css/mapbox-gl.css';
-import { Popup } from './popup';
 
 const ACCESS_TOKEN = 'pk.eyJ1Ijoiam9yZGFuZm9yZW1hbiIsImEiOiJjazJ1dnR6OTYwM2pqM2draXFoOGhpaXd0In0.qWJvuqpu6RJowavAhcuXBw';
 
@@ -36,7 +35,6 @@ export class Map extends React.Component {
                     ref={el => this.mapContainer = el}
                     className="mapContainer"
                 />
-                <Popup title='Hello World!' map={this.map}/>
             </div>
         );
     }

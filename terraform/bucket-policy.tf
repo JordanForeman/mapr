@@ -4,7 +4,7 @@ data "aws_iam_policy_document" "deployment_bucket_policy" {
         actions = ["s3:GetObject"]
         effect = "Allow"
         resources = [
-            "${aws_s3_bucket.deployment_bucket.arn}/*"
+            "arn:aws:s3:::${var.app_name}.${var.root_domain}"
         ]
         principals {
             type = "AWS"

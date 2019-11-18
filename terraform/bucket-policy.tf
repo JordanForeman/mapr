@@ -3,9 +3,7 @@ data "aws_iam_policy_document" "deployment_bucket_policy" {
         sid = "CloudFrontCanGetObject"
         actions = ["s3:GetObject"]
         effect = "Allow"
-        resources = [
-            "arn:aws:s3:::${var.app_name}.${var.root_domain}"
-        ]
+        resources = ["arn:aws:s3:::${var.app_name}.${var.root_domain}/*"]
         principals {
             type = "AWS"
             identifiers = ["${aws_cloudfront_origin_access_identity.origin_access_identity.iam_arn}"]
@@ -19,7 +17,7 @@ data "aws_iam_policy_document" "deployment_bucket_policy" {
             "s3:PutObjectVersionAcl"
         ]
         effect = "Deny"
-        resources = ["${aws_s3_bucket.deployment_bucket.arn}/*"]
+        resources = ["arn:aws:s3:::${var.app_name}.${var.root_domain}/*"]
         principals {
             type = "*"
             identifiers = ["*"]

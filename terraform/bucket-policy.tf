@@ -19,7 +19,7 @@ data "aws_iam_policy_document" "deployment_bucket_policy" {
             "s3:PutObjectVersionAcl"
         ]
         effect = "Deny"
-        resource = "${aws_s3_bucket.deployment_bucket.arn}/*"
+        resources = ["${aws_s3_bucket.deployment_bucket.arn}/*"]
         principals {
             type = "*"
             identifiers = ["*"]

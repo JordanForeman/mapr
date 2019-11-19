@@ -13,9 +13,9 @@ export class Map extends React.Component {
         super(props);
 
         this.state = {
-            lng: 5,
-            lat: 34,
-            zoom: 2
+            lat: props.lat,
+            lng: props.lng,
+            zoom: props.zoom
         };
     }
 
@@ -23,9 +23,20 @@ export class Map extends React.Component {
         this.map = new mapboxgl.Map({
             container: this.mapContainer,
             style: 'mapbox://styles/mapbox/streets-v11',
-            center: [this.state.lng, this.state.lat],
-            zoom: this.state.zoom
+            center: [this.props.lng, this.props.lat],
+            zoom: this.props.zoom
         });
+        this.map.on('move', ::this.handleMove);
+    }
+
+    handleMove() {
+        const position = {
+            lng: this.map.getCenter().lng.toFixed(4),
+            lat: this.map.getCenter().lat.toFixed(4),
+            zoom: this.map.getZoom().toFixed(2)
+        };
+        this.setState(() => position);
+        this.props.moveMap(position);
     }
 
     render() {

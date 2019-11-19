@@ -4,7 +4,7 @@ import mapboxgl from 'mapbox-gl';
 import '../styles/map.scss';
 import '../../node_modules/mapbox-gl/src/css/mapbox-gl.css';
 
-const ACCESS_TOKEN = 'pk.eyJ1Ijoiam9yZGFuZm9yZW1hbiIsImEiOiJjazJ1dnR6OTYwM2pqM2draXFoOGhpaXd0In0.qWJvuqpu6RJowavAhcuXBw';
+const ACCESS_TOKEN = 'pk.eyJ1Ijoiam9yZGFuZm9yZW1hbiIsImEiOiJjazM1YXgxZG0xZWN1M2dwaTdlcG9hcGdzIn0.pr4DzccjqOfKOpsd334jdw';
 
 mapboxgl.accessToken = ACCESS_TOKEN;
 

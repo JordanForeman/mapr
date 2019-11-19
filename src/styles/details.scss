@@ -1,0 +1,20 @@
+.details-container {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 250px;
+    background: white;
+    box-shadow: 0 0 3px #CCC;
+
+    padding: 10px 13px;
+
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    li {
+        line-height: 1.25;
+    }
+}

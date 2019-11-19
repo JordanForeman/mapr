@@ -28,7 +28,7 @@ export default (state = DEFAULT_STATE, action = {}) => {
 }
 
 export const selectors = {
-    getLat: state => state.lat,
-    getLng: state => state.lng,
-    getZoom: state => state.zoom
+    getLat: state => state.mapLocation.lat,
+    getLng: state => state.mapLocation.lng,
+    getZoom: state => state.mapLocation.zoom
 };

@@ -61,15 +61,9 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_KEY }}
           AWS_REGION: 'us-east-1'
           SOURCE_DIR: 'public'
-      - name: Get Distribution Id
-        run: export DISTRIBUTION_ID=`npx cf-find mapr.jordanforeman.com --silent`
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_KEY }}
       - name: Invalidate CloudFront Cache
-        uses: awact/cloudfront-action@master
+        run: aws cloudfront create-invalidation --distribution-id $(npx cf-find mapr.jordanforeman.com --silent) --paths "/*"
         env:
-          SOURCE_DIR: '/*'
           AWS_REGION: 'us-east-1'
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_KEY }}

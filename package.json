@@ -18,7 +18,7 @@
     "babel-preset-gatsby": "0.2.26",
     "cf-find": "0.1.2",
     "cz-conventional-changelog": "3.0.2",
-    "gatsby-cli": "2.8.21",
+    "gatsby-cli": "2.8.22",
     "husky": "3.1.0"
   },
   "dependencies": {

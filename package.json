@@ -13,8 +13,8 @@
   "license": "ISC",
   "devDependencies": {
     "@babel/plugin-proposal-function-bind": "7.7.4",
-    "@commitlint/cli": "8.3.3",
-    "@commitlint/config-conventional": "8.3.3",
+    "@commitlint/cli": "8.3.4",
+    "@commitlint/config-conventional": "8.3.4",
     "babel-preset-gatsby": "0.2.26",
     "cf-find": "0.1.2",
     "cz-conventional-changelog": "3.0.2",

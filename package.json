@@ -15,10 +15,10 @@
     "@babel/plugin-proposal-function-bind": "7.8.3",
     "@commitlint/cli": "8.3.5",
     "@commitlint/config-conventional": "8.3.4",
-    "babel-preset-gatsby": "0.2.30",
+    "babel-preset-gatsby": "0.2.31",
     "cf-find": "0.1.2",
     "cz-conventional-changelog": "3.1.0",
-    "gatsby-cli": "2.10.1",
+    "gatsby-cli": "2.10.2",
     "husky": "3.1.0"
   },
   "dependencies": {
